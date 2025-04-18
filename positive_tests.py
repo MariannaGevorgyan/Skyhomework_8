@@ -43,6 +43,11 @@ def get_project_id(new_id):
     return resp.json()
 
 
+def test_get_projects_list():
+    body = get_projects_list()
+    assert len(body) > 0
+
+
 
 def test_create_project():
     body = get_projects_list()
@@ -60,9 +65,6 @@ def test_create_project():
 
 
 
-def test_get_projects_list():
-    body = get_projects_list()
-    assert len(body) > 0
 
 
 

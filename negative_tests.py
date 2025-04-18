@@ -46,14 +46,16 @@ def test_create_project():
     body = get_projects_list()
     len_after = body['paging']['count']
 
-    assert len_after - len_before == 1
+    assert len_before - len_after == 1    #поменять местами after и before
     assert body['content'][-1]["id"] == new_id
 
 
 
 def test_get_projects_list():
     body = get_projects_list()
-    assert len(body) > 0
+    response = requests.get(base_url + '/api-v2/projects')
+    assert len(body) == 0
+    assert resp.status_code == 200
 
 
 
@@ -66,11 +68,5 @@ def test_edit_project():
     edited = edit_project(new_id, new_title)
     assert edited['title'] == new_title
 
-    assert len_after - len_before == 1
-    assert body ['content'] [-1] ["id"] == new_id
 
 
-
-def test_get_projects_list():
-    body = get_projects_list()
-    assert len(body) > 0
